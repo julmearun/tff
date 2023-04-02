@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "bucklebuck" {
-  bucket = "my-tf-massiveprince-bucket11"
+  bucket = "new-hyd-pune-1"
   acl    = "private"
 
   tags = {
