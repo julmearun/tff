@@ -1,38 +1,45 @@
 pipeline {
-    agent any
-    
+
+    agent any 
+
     tools {
-        terraform 'terraform'
+        terraform ('terraform')
     }
     stages {
-        stage ("checkout from GIT") {
+
+        stage ('git checkout') {
             steps {
-                git branch: 'main', credentialsId: 'cde06f21-9ae7-4081-a549-f7bdb515dc6f', url: 'https://github.com/codepipe/tff.git'
+                git branch: 'main', url: 'https://github.com/julmearun/tff.git'
             }
         }
-        stage ("terraform init") {
+        stage ('terraform init') {
             steps {
                 sh 'terraform init'
             }
         }
-        stage ("terraform fmt") {
+        stage ('terraform fmt') {
             steps {
                 sh 'terraform fmt'
             }
         }
-        stage ("terraform validate") {
+        stage ('terraform validate') {
             steps {
                 sh 'terraform validate'
             }
         }
-        stage ("terrafrom plan") {
+        stage ('terraform plan') {
             steps {
-                sh 'terraform plan '
+                sh 'terraform plan'
             }
         }
-        stage ("terraform apply") {
+        stage ('terraform apply') {
             steps {
                 sh 'terraform apply --auto-approve'
+            }
+        }
+        stage ('terraform destroy') {
+            steps {
+                sh 'terraform destroy --auto-approve'
             }
         }
     }
