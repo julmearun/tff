@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "bucklebuck" {
-  bucket = "terraform-resource-bucket-cricket-1"
+  bucket = "terraform-rcb-33"
   acl    = "private"
 
   tags = {
